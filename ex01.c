@@ -24,8 +24,8 @@ typedef struct _shared_counter_t {
 } shared_counter_t;
 
 shared_counter_t * shared_counter_new(void);
-void shared_counter_drop(shared_counter_t * sc);
-void shared_counter_increment(shared_counter_t * shared_counter);
+void shared_counter_drop(shared_counter_t sc);
+shared_counter_increment(shared_counter_t * shared_counter);
 int shared_counter_value(const shared_counter_t * shared_counter);
 
 typedef struct _thread_data_t {
@@ -38,7 +38,7 @@ typedef struct _thread_data_t {
  * @return pointer to heap allocated shared_counter_t.
  */
 shared_counter_t * shared_counter_new(void) {
-    shared_counter_t * sc = malloc(sizeof(shared_counter_t));
+    shared_counter_t * sc = malloc(sizeof(shared_counter_t *));
     sc->counter = 0;
     return sc;
 }
@@ -89,13 +89,14 @@ int main(void) {
 
     // On crée une ressource partagée ici un compteur partagé
     // Et on va découvrir les problèmes de partager sans politique de partage ;)
-    shared_counter_t * shared_counter = shared_counter_new();
+    shared_counter_t * shared_counter;
+    shared_counter_new();
 
     // On va créer `MAX_THREADS` threads
     for (int i = 0; i < MAX_THREADS; i += 1) {
         thr_data[i].thread_id = i;
         // On passe un pointeur sur shared_counter
-        thr_data[i].shared_counter = shared_counter;
+        thr_data[i].shared_counter = &shared_counter;
         // Petit bug à la ligne suivante checkez vos erreurs de compilation
         int failure_reason = pthread_create(&threads[i], NULL, run, &thr_data[i]);
         if (failure_reason) {
