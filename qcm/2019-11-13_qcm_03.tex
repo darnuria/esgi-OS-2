@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper,addpoint,answers]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[]{lmodern}
+\usepackage[french]{babel}
+%\usepackage{mathtools}
+\usepackage[margin=2cm]{geometry} %layout
+\usepackage{graphicx}
+\usepackage{booktabs} % for much better looking tables
+% Put the bibliography in the ToC
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+% Alter the style of the Table of Contents
+\usepackage[titles]{tocloft}
+
+\usepackage[pdfauthor={Axel Viala},
+  pdftitle={Examen ESGI OS-03},
+  pagebackref=true,%
+  colorlinks=true,%
+  linkcolor=green,%
+  %urlcolor=green!70!black,
+  pdftex]{hyperref}
+\usepackage[ampersand]{easylist}
+\renewcommand{\solutiontitle}{}
+
+\author{Axel Viala <axel.viala@darnuria.eu>}
+\title{2019-11-14: Auto evaluation connaissances 03\\Bases: Processus et mémoire - durée 15 minutes}
+\date{14 novembre 2019}
+
+\begin{document}
+  \maketitle
+  \makebox[\textwidth][l]{Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Correcteur: Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Classe:\hrulefill}  
+  \textbf{Objectifs:} Le but des contrôles de connaissances en début de cours est pour vous de vérifier où vous
+  en êtes par rapport au cours précédent.
+  \newline
+  Pour moi un moyen de vérifier que la pédagogie est adaptée à la classe.
+  \newline
+  \textbf{Notation:} Les points sont indiqués à titre d'information la notation peut changer pour
+  des raisons d'harmonisation.
+  \newline
+  \textbf{Entre-correction:} Vous pourrez faire la correction d'une autre copie avec tout document
+  autorisé. Cette correction aura lieu au retour de la pause si vous arrivez à l'heure et
+  améliorera la note initiale du correcteur.
+  \begin{questions}
+
+    \question[1] Quelles assertions sur les processus sont vraies: (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice Un processus possède sa propre mémoire
+        \CorrectChoice Un processus possède ses fils de calcul (threads)
+        \choice Un processus peut accèder par défaut à la mémoire de tout les autres processus
+        \CorrectChoice Par défaut un processus parent peut accèder à des ressources de son enfant
+        \CorrectChoice Pour partager des ressources un processus doit faire une demande particulière
+        \CorrectChoice Un processus peut forker et executer un autre programme
+        \choice Un processus peut faire le café 
+        \ifprintanswers
+          \emph{En pratique oui.}
+        \fi
+    \end{checkboxes}
+  
+    \question[1] Que veux dire \texttt{pid}.
+    \ifprintanswers
+    \begin{solution}
+        Process IDentifier
+    \end{solution}
+    \else
+    \vspace{2in}
+    \fi
+    
+    \question[1] À quoi sert la fonction \texttt{fork}.
+    \ifprintanswers
+    \begin{solution}
+        Elle sert à dupliquer un processus. Suite au fork on a deux processus,
+        l'enfant et le parents qui s'executent et partagent des ressources.
+    \end{solution}
+    \else
+    \vspace{2in}
+    \fi
+    
+    \question[2] Une segmentation fault peut être levée si: (0 choix ou plus possibles)
+    \begin{checkboxes}
+        \CorrectChoice Si on accède à de la mémoire non allouée
+        \choice Si vous n'aimez pas RainbowDash
+        \choice Si on accède à une variable locale déclarée
+    \end{checkboxes}
+
+    \question[1] Après un fork reussi combien a-t-on de processus:
+    \begin{checkboxes}
+        \CorrectChoice 2
+        \choice 42
+        \choice 3
+        \choice 1
+    \end{checkboxes}
+
+    \question[1] Quels sont les principaux segments mémoires de l'espace mémoire d'un processus ?
+    (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice Data: segments de données connus à la compilation
+        \CorrectChoice Code: Instructions en lecture seule
+        \choice Ring: L'espace unique pour les gouverner tous
+        \CorrectChoice Stack: données de la pile
+        \CorrectChoice Kernel: Adresses réservées au Kernel
+        \CorrectChoice Heap: Zone allouée par malloc
+        \CorrectChoice Memory Mapping Segment: Espaces des bibliothèques dynamiques
+        \choice The good place: L'espace réservé aux bonnes valeurs
+    \end{checkboxes}
+  \end{questions}
+\end{document}

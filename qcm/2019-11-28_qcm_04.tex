@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper,addpoint,answers]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[]{lmodern}
+\usepackage[french]{babel}
+%\usepackage{mathtools}
+\usepackage[margin=2cm]{geometry} %layout
+\usepackage{graphicx}
+\usepackage{booktabs} % for much better looking tables
+% Put the bibliography in the ToC
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+% Alter the style of the Table of Contents
+\usepackage[titles]{tocloft}
+
+\usepackage[pdfauthor={Axel Viala},
+  pdftitle={Examen ESGI OS-03},
+  pagebackref=true,%
+  colorlinks=true,%
+  linkcolor=green,%
+  %urlcolor=green!70!black,
+  pdftex]{hyperref}
+\usepackage[ampersand]{easylist}
+\renewcommand{\solutiontitle}{}
+
+\author{Axel Viala <axel.viala@darnuria.eu>}
+\title{Auto evaluation connaissances 04\\Bases: mémoire - durée 15 minutes}
+\date{28 novembre 2019}
+
+\begin{document}
+  \maketitle
+  \makebox[\textwidth][l]{Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Correcteur: Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Classe:\hrulefill}  
+  \textbf{Objectifs:} Le but des contrôles de connaissances en début de cours est pour vous de vérifier où vous
+  en êtes par rapport au cours précédent.
+  \newline
+  Pour moi un moyen de vérifier que la pédagogie est adaptée à la classe.
+  \newline
+  \textbf{Notation:} Les points sont indiqués à titre d'information la notation peut changer pour
+  des raisons d'harmonisation.
+  \newline
+  \textbf{Entre-correction:} Vous pourrez faire la correction d'une autre copie avec tout document
+  autorisé. Cette correction aura lieu au retour de la pause si vous arrivez à l'heure et
+  améliorera la note initiale du correcteur.
+  \begin{questions}
+
+    \question[1] Quelles assertions générales sur malloc sont vraies? (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice malloc peut avoir recours a un syscall pour obtenir de la mémoire
+        \choice En cas d'accès non authorisé à la \emph{Netsphere}\footnote{Manga et anime \emph{BLAME!} de Tsutomu Nihei} la \emph{SafeGuard} peut venir vous terminer
+        \CorrectChoice La mémoire peut être donnée a la demande (l'espace est donnée mais pas encore la mémoire réelle)
+        \CorrectChoice La mémoire allouée est dans le segment de tas (HEAP)
+        \choice La mémoire allouée est dans le segment de pile (STACK)
+    \end{checkboxes}
+  
+    \question[1] Un espace d'adressage sur $32 bits$ peut aller jusqu'à:
+    \begin{checkboxes}
+      \choice $2^{32}$ soit \texttt{0x100000000}
+      \CorrectChoice $2^{32} - 1$ soit \texttt{0xFFFFFFFF} \emph{Erratum: dans le sujet il y avait une coquille c'est bien $2^{32 - 1}$ et non $2^{31}$}
+      \choice $2^{16} - 1$ soit \texttt{0xFFFF}
+      \choice \texttt{0xDEADBEEF}
+    \end{checkboxes}
+    
+    \question[1] À propos de la mémoire sur un ordinateur et OS (moderne) comme vos PC portables
+    \begin{checkboxes}
+      \choice En C sur Linux dans un processus on manipule des adresses physiques
+      \CorrectChoice Elle est paginée (découpée en pages) et segmentée
+      \CorrectChoice Chaque procesuss à sa mémoire virtuelle
+      \choice La mémoire permet de se connecter à la \emph{Netsphere} 
+      \CorrectChoice Un composant matériel dédié est requis pour traduire les adresses de virtuel à physique
+      \choice En C sur Linux si j'adresse \emph{en dehors} de mon espace d'adressage authorisé rien ne se passe
+    \end{checkboxes}
+
+    \question[2] Dessiner (au dos) un schema de l'espace d'adressage virtuel d'un processus.
+    Indiquer au moins 3 segments indispensables.
+    \ifprintanswers{\emph{Réponses:} Voir cours ;)} \fi
+
+  \end{questions}
+\end{document}

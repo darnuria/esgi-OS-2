@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper,addpoint,answers]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[]{lmodern}
+\usepackage[french]{babel}
+%\usepackage{mathtools}
+\usepackage[margin=2cm]{geometry} %layout
+\usepackage{graphicx}
+\usepackage{booktabs} % for much better looking tables
+% Put the bibliography in the ToC
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+% Alter the style of the Table of Contents
+\usepackage[titles]{tocloft}
+
+\usepackage[pdfauthor={Axel Viala},
+  pdftitle={Examen ESGI OS-01},
+  pagebackref=true,%
+  colorlinks=true,%
+  linkcolor=green,%
+  %urlcolor=green!70!black,
+  pdftex]{hyperref}
+\usepackage[ampersand]{easylist}
+\renewcommand{\solutiontitle}{}
+
+\author{Axel Viala <axel.viala@darnuria.eu>}
+\title{2019-10-17: Auto evaluation connaissances 02 - Entrées sorties et généralités OS - durée 15 minutes}
+
+\begin{document}
+  \maketitle
+  \makebox[\textwidth][l]{Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Correcteur: Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Classe:\hrulefill}
+  \textbf{Objectifs:} Le but des contrôles de connaissances en début de cours est pour vous de vérifier où vous
+  en êtes par rapport au cours précédent.
+  \newline
+  Pour moi un moyen de vérifier que la pédagogie est adaptée à la classe.
+  \newline
+  \textbf{Notation:}: Les points sont indiqués à titre d'information la notation peut changer pour
+  des raisons d'harmonisation.
+  \newline
+  \textbf{Entre-correction:} Vous pourrez faire la correction d'une autre copie avec tout document
+  autorisé. Cette correction aura lieu au retour de la pause si vous arrivez à l'heure et
+  améliorera la note initiale du correcteur.
+  \begin{questions}
+
+    \question[1] La \texttt{STDIN}, \texttt{STDOUT}, \texttt{STDERR} sous les systèmes d'exploitation de la famille des UNIX sont :
+    (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice Sont appelés des flux ou \textit{stream} en anglais
+        \CorrectChoice Accessibles comme un fichier : on peut utiliser par exemple \texttt{read}, \texttt{write} dessus
+        \CorrectChoice Par défaut \texttt{printf} écrit sur la \texttt{STDOUT}
+      \end{checkboxes}
+
+    \question[2] Expliquer de façon succincte le paradigme (choix technologique) \og{}Tout est fichier\fg{}.
+    Comment il s'illustre par exemple sur Linux : (2 lignes max)
+    \ifprintanswers
+    \begin{solution}
+        Une majorité des abstractions offertes par le kernel sont accessibles par une interface à
+        base de fichier. Par exemple accèder au disque ou écrire sur la console.
+    \end{solution}
+    \else
+    \vspace{2in}
+    \fi
+
+    \question[2] Un chemin sur un système d'exploitation Unix (MacOS ou Linux)\\
+    par exemple \texttt{/home/axel/cat.jpg} sert à: (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice Accéder à une ressource (ex un fichier sur le disque) dans l'arborescence de fichiers
+        \CorrectChoice Proposer une organisation des ressources (notament les fichiers)
+        \choice C'est représenté comme un entier
+        \CorrectChoice C'est représenté comme une sequence de caractères séparé par des \texttt{/}.
+    \end{checkboxes}
+    \newpage
+
+    \question[2] Vous avez un dossier \texttt{boring\_work} qui contient un fichier \texttt{exo.c} et un dossier\\
+    \texttt{hidden\_manga} contenant 2 fichiers \texttt{naussicaa.cbz}, \texttt{akira.cbz}.\\
+    Combien avez vous de fichiers sur l'aborescence en dessous de \texttt{boring\_work} (\texttt{boring\_work} est inclus)?
+    (on exclut les dossiers \texttt{.} et \texttt{..})\\
+    Dessinez cette arboresence, on exclura ce qu'il y a au dessus de \texttt{boring\_work}.
+    \ifprintanswers
+    \begin{solution}
+        5 fichiers, 2 dossiers, 3 fichiers sur le disque.
+    \end{solution}
+    \else
+    \vspace{3in}
+    \fi
+
+    \question[4] Quelles propositions sont vraies à propos d'un kernel (noyau) de système d'exploitation: (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice Propose une façon d'interagir uniformément avec le matériel
+        \CorrectChoice Propose des politiques (policy) d'intercommunications entre programmes
+        \choice S'exécute comme un processus utilisateur sur le processeur
+        \CorrectChoice S'exécute de façon privilégiée sur le processeur
+        \choice Sa mémoire est accessible aux programmes utilisateur sans protection
+        \CorrectChoice Un \texttt{syscall} fait rentrer en mode kernel
+    \end{checkboxes}
+
+    \question[3] Un programme (processus) utilisateur: (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \CorrectChoice A sa mémoire par défaut isolée des autres programmes
+        \CorrectChoice Peut ouvrir des fichiers si le propriétaire du processus a les bons droits
+        \choice S'exécute dans le même mode de processeur que le kernel.
+        \CorrectChoice S'exécute dans un mode processeur avec moins de droit que le kernel
+        \CorrectChoice Si on accède en dehors des zones mémoire allouées (pile ou tas) légitimement on peut obtenir une erreur
+        de segmentation
+    \end{checkboxes}
+
+    \question[1] Par défaut en C une variable telle que \texttt{int a = 42}\\dans une fonction:
+    (0 ou plus choix possibles)
+    \begin{checkboxes}
+        \choice Est allouée dans le tas (HEAP) avec malloc
+        \CorrectChoice Est allouée dans la pile (STACK).
+    \end{checkboxes}
+  \end{questions}
+\end{document}

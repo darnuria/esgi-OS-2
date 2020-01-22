@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper,addpoint]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[]{lmodern}
+\usepackage[french]{babel}
+%\usepackage{mathtools}
+\usepackage[margin=2cm]{geometry} %layout
+\usepackage{graphicx}
+\usepackage{booktabs} % for much better looking tables
+% Put the bibliography in the ToC
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+% Alter the style of the Table of Contents
+\usepackage[titles]{tocloft}
+
+\usepackage[pdfauthor={Axel Viala},
+  pdftitle={Examen ESGI OS-01},
+  pagebackref=true,%
+  colorlinks=true,%
+  linkcolor=green,%
+  %urlcolor=green!70!black,
+  pdftex]{hyperref}
+\usepackage[ampersand]{easylist}
+\renewcommand{\solutiontitle}{}
+
+\nopointsinmargin
+\pointformat{}
+
+\author{Axel Viala <axel.viala@darnuria.eu>}
+\title{2019-10-17: Auto evaluation connaissances 01 - durée 15 minutes}
+
+\begin{document}
+  \maketitle
+  \makebox[\textwidth][l]{Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{CorrectChoiceeur: Nom et Prénom:\hrulefill}
+  \makebox[\textwidth][l]{Classe:\hrulefill}  
+  \textbf{Objectifs:} Le but des contrôles de connaissances en début de cours est pour vous de vérifier ou vous
+  en êtes par rapport au cours précédent.
+  \newline
+  Pour moi un moyen de vérifier que la pédagogie est adaptée à la classe.
+  \newline
+  \textbf{Notation:}: Les points sont indiqué à titre d'information la notation peut changer pour
+  des raisons d'harmonisation.
+  \newline
+  \textbf{Entre-correction:} Vous pourrez faire la correction d'une autre copie avec tout document
+  autorisé aura lieu au retour de la pause si vous arrivez à l'heure. La correction
+  améliore la note initiale du correcteur.
+  \begin{questions}
+    \question[0] Avez-vous déjà fait du C: Si oui combien de temps environ.
+    \vspace{64pt}
+
+    \question[2] Un descripteur de fichier \emph{file descriptor} est sous unix : (plusieurs choix possibles)
+    \begin{checkboxes}
+      \choice Un pointeur
+      \CorrectChoice Un identifiant abstrait utilisable pour accéder a une ressource (ex-fichier)
+      \CorrectChoice Représenté par un simple entier positif 0 inclu.
+      \choice Une structure regroupant des informations sur un fichier
+    \end{checkboxes}
+
+    \question[3] Le langage C est un langage (plusieurs choix possibles)
+      \begin{checkboxes}
+        \CorrectChoice Compilé
+        \CorrectChoice La gestion de la mémoire (allocations/desallocations) est gérée manuellement
+        \choice Exécuté en machine virtuelle comme Python
+        \choice À typage dynamique
+        \CorrectChoice À typage statique
+      \end{checkboxes}
+
+    \question[5] Un appel système est : (plusieurs choix possibles)
+    \begin{checkboxes}
+      \CorrectChoice Est en général un service proposé par le kernel du système d'exploitation
+      \CorrectChoice Son appel entrainera la suspension de mon programme pour passer en mode kernel
+      \CorrectChoice \texttt{write} sous linux est un appel système
+      \choice \texttt{sizeof} est un appel système
+      \CorrectChoice Les appels systèmes sont des fonctions comme les autres fonctions en C
+      \CorrectChoice Un appel système nécessite une instruction particulière du processeur
+    \end{checkboxes}
+
+    \question[3] En C \texttt{"Hello world"} peut être du type: (plusieurs choix possibles)
+    \begin{checkboxes}
+      \CorrectChoice \texttt{char *}
+      \choice \texttt{int}
+      \CorrectChoice \texttt{char[]}
+      \CorrectChoice \texttt{const char[]}
+    \end{checkboxes}
+
+    \newpage
+    \question[1] Le type \texttt{int * a} représente: (un seul choix possible)
+    \begin{checkboxes}
+      \CorrectChoice Un pointeur sur un entier
+      \choice Un entier
+      \choice Un pointeur de pointeur
+      \choice La réponse D
+    \end{checkboxes}
+
+
+    \question[3] Le programme \texttt{objdump} sert à: (un seul choix possible)
+    \begin{checkboxes}
+      \CorrectChoice Analyser un programme en langage machine vers de l'assembleur
+      \CorrectChoice Lire du code source (en ASM)
+      \CorrectChoice Tracer les appels systèmes d'un programme
+    \end{checkboxes}
+
+    \question[1] Un programme C est compilé par gcc en: (un seul choix possible)
+    \begin{checkboxes}
+      \choice Klingon
+      \CorrectChoice Langage machine
+      \choice Byte code de haut niveau pour machine virtuelle
+    \end{checkboxes}
+
+    \question[3] La commande \texttt{man} sert à: (plusieurs choix possibles)
+    \begin{checkboxes}
+      \CorrectChoice Obtenir diverses documentations notamment celles des appels systèmes
+      \CorrectChoice Lire des exemples de code pour utiliser un syscall
+      \CorrectChoice Connaitre des options sur une commande de shell
+    \end{checkboxes}
+
+    \question[2] Le type \texttt{void} (sans *) dans une signature de fonctions en C peut indiquer: (plusieurs choix possibles)
+    \begin{checkboxes}
+      \CorrectChoice Que une fonction ne prends pas de paramètres
+      \CorrectChoice Que une fonction ne retourne pas de valeur
+    \end{checkboxes}
+
+    \question[3] L'appel système \texttt{write} attends trois paramètres citez en au moins deux.
+    \ifprintanswers
+    \begin{solution}
+        \begin{itemize}
+            \item Descripteur de fichier sur lequel on va écrire 
+            \item Adresse du début du message (bloc de mémoire contingue) à écrire
+            \item nombres de bytes à écrire de notre message      
+        \end{itemize}
+    \end{solution}  
+    \else
+        \vspace{64pt}
+    \fi
+
+    \question[2] Citez au moins deux ressources rendues accessibles par descripteur de fichier par le kernel linux:
+    \ifprintanswers
+    \begin{solution}
+        \begin{itemize}
+            \item Fichiers sur le disque
+            \item Périphériques
+            \item (bonus) Information sur les processus
+            \item (bonus) Réseau
+            \item (bonus) intercommunication entre processus
+            \item (bonus) mémoire
+        \end{itemize}
+    \end{solution}
+    \else
+    \vspace{64pt}
+    \fi
+
+    \question[5] Un kernel comme linux propose (plusieurs choix possibles):
+    \begin{checkboxes}
+      \CorrectChoice Des abstractions pour gérer du matériel
+      \CorrectChoice De quoi communiquer entre programmes
+      \choice De quoi garantir qu'une variable est immutable
+      \CorrectChoice Pouvoir envoyer des données sur le réseau
+      \CorrectChoice Des mécanismes pour allouer dynamiquement de la mémoire
+      \CorrectChoice Gérer que lorsque l'on appuie sur une touche notre programme puissent être notifié
+    \end{checkboxes}
+  \end{questions}
+\end{document}
